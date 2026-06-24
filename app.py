@@ -62,46 +62,16 @@ if "vector_store" in st.session_state:
             st.metric("Chunks",3)
 
         # Monitoring Details
-        with st.expander(
-            "🔍 Monitoring & Evaluation"
-        ):
+        with st.expander("🔍 Monitoring & Evaluation"):
+            st.subheader("Query Rewriting")
+            st.write(result["rewritten_question"])
 
-            st.subheader(
-                "Query Rewriting"
-            )
+            st.subheader("Evaluation")
+            st.write(f"Faithfulness Score: {result['faithfulness_score']}")
+            st.write(result["faithfulness_reason"])
 
-            st.write(
-                result["rewritten_question"]
-            )
-
-            st.subheader(
-                "Evaluation"
-            )
-
-            st.write(
-                f"Faithfulness Score: {result['faithfulness_score']}"
-            )
-
-            st.write(
-                result["faithfulness_reason"]
-            )
-
-            st.subheader(
-                "Latency Breakdown"
-            )
-
-            st.write(
-                f"Rewrite Time: {result['rewrite_time']:.3f}s"
-            )
-
-            st.write(
-                f"Retrieval Time: {result['retrieval_time']:.3f}s"
-            )
-
-            st.write(
-                f"Generation Time: {result['generation_time']:.3f}s"
-            )
-
-            st.write(
-                f"Total Time: {total_time:.3f}s"
-            )
+            st.subheader("Latency Breakdown")
+            st.write(f"Rewrite Time: {result['rewrite_time']:.3f}s")
+            st.write(f"Retrieval Time: {result['retrieval_time']:.3f}s")
+            st.write(f"Generation Time: {result['generation_time']:.3f}s")
+            st.write( f"Total Time: {total_time:.3f}s")
